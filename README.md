@@ -1,47 +1,86 @@
-# Svelte + TS + Vite
+Con Svelte hay muchísimas cosas que podríamos explorar, y algunas de ellas no son tan obvias al principio pero te cambian completamente cómo desarrollas.
+Te las voy a ordenar de lo más básico a lo más avanzado para que veas un mapa completo:
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+---
 
-## Recommended IDE Setup
+### **1. Fundamentos que hay que dominar**
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+* **Sintaxis reactiva** → el `$:` para recalcular valores automáticamente.
+* **Bindings** → `bind:value`, `bind:checked`, `bind:this` para enlazar variables a inputs, elementos y componentes.
+* **Eventos** → `on:click`, `on:input`, y el uso de `event modifiers` como `on:click|preventDefault`.
+* **Props** → cómo pasar datos a un componente (`export let title`).
+* **Slots** → insertar contenido dinámico dentro de un componente.
 
-## Need an official Svelte framework?
+---
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+### **2. Reactividad avanzada**
 
-## Technical considerations
+* **Stores** (`writable`, `readable`, `derived`) para estado global reactivo.
+* **Auto-suscripción con `$store`** sin necesidad de `.subscribe()`.
+* **Reactive statements** combinando variables para cálculos complejos.
+* **Reactividad de arrays y objetos** (no es automática al mutar, hay que reasignar).
 
-**Why use this over SvelteKit?**
+---
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+### **3. Arquitectura de componentes**
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+* Componentes presentacionales vs. contenedores.
+* Comunicación entre componentes:
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+  * Props (padre → hijo).
+  * Eventos personalizados (hijo → padre) con `createEventDispatcher`.
+  * Stores (estado compartido).
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+---
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+### **4. Animaciones y transiciones**
 
-**Why include `.vscode/extensions.json`?**
+* **Transitions** (`fade`, `fly`, `scale`, `slide`) listas para usar.
+* **Motion** (`tweened`, `spring`) para animar valores numéricos y CSS.
+* **Custom animations** con JavaScript puro.
+* **Animate directive** para animar listas que cambian.
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+---
 
-**Why enable `allowJs` in the TS template?**
+### **5. Estilos y diseño**
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+* CSS scoped automáticamente (solo afecta al componente).
+* Uso de variables CSS (`--color-primary`).
+* Integración con **Tailwind** o **CSS Modules**.
+* Uso de `:global()` para estilos compartidos.
+* Media queries y dark mode en Svelte.
 
-**Why is HMR not preserving my local component state?**
+---
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+### **6. Carga de datos y ciclo de vida**
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+* Hooks (`onMount`, `beforeUpdate`, `afterUpdate`, `onDestroy`).
+* Peticiones con `fetch` o librerías.
+* Loaders en **SvelteKit** para SSR y prerendering.
+* Uso de async/await dentro del template con `{#await ...}`.
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+---
+
+### **7. Optimización y escalabilidad**
+
+* Code splitting y lazy loading con `import()`.
+* Preprocesadores (TypeScript, SCSS, PostCSS).
+* Stores persistentes (localStorage/sessionStorage).
+* Reducir el re-render con `keyed each`.
+* Componentes dinámicos con `<svelte:component>`.
+
+---
+
+### **8. Cosas muy potentes pero poco conocidas**
+
+* **Actions personalizadas** (`use:`) para añadir comportamiento a elementos DOM.
+* **Context API** (`setContext` / `getContext`) para pasar datos sin props.
+* **SSR + SPA híbrido** con SvelteKit.
+* Creación de **paquetes reutilizables** con `npm init svelte@next`.
+
+---
+
+Si quieres, puedo empezar con un **mini-proyecto Svelte** donde combinemos varias de estas cosas:
+un **dashboard interactivo con tarjetas, animaciones y datos reactivos**, como las que estás diseñando ahora, pero con datos que cambian en tiempo real.
+
+¿Quieres que lo arme?
