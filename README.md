@@ -80,6 +80,12 @@ Te las voy a ordenar de lo más básico a lo más avanzado para que veas un mapa
 
 ---
 
+## **9. Paginas de componentes reutilizables** 
+
+* https://flowbite-svelte.com/docs/components/datepicker
+* https://sveltematerialui.com/THEMING.md
+* https://madewithsvelte.com/argon-dashboard-svelte?utm_source=chatgpt.com
+
 Si quieres, puedo empezar con un **mini-proyecto Svelte** donde combinemos varias de estas cosas:
 un **dashboard interactivo con tarjetas, animaciones y datos reactivos**, como las que estás diseñando ahora, pero con datos que cambian en tiempo real.
 

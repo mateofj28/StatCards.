@@ -130,6 +130,7 @@
     flex: 1;
     background-color: #ebecf8;
     padding: 2rem;
+    height: 100vh;
   }
 
   /* Responsive */
